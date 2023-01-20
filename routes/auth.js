@@ -5,6 +5,7 @@ import {
   getMe,
   getAll,
   removeUser,
+  updateUser,
 } from '../controlers/auth.js';
 import { checkAuth } from '../utils/checkAuth.js';
 const router = new Router();
@@ -28,5 +29,9 @@ router.get('/all', getAll);
 // Remove User
 // http://localhost:5000/api/auth/:id
 router.delete('/:id', removeUser);
+
+// Update User
+// http://localhost:5000/api/auth/:username
+router.put('/:username', updateUser);
 
 export default router;

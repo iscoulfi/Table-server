@@ -145,3 +145,18 @@ export const removeUser = async (req, res) => {
     res.json({ message: 'Something went wrong.' });
   }
 };
+
+// Update user
+export const updateUser = (req, res) => {
+  try {
+    User.findOneAndUpdate({ username: req.params.username }, req.body).then(
+      function () {
+        User.findOne({ username: req.params.username }).then(function (user) {
+          res.json(user);
+        });
+      }
+    );
+  } catch (error) {
+    res.json({ message: 'Something went wrong.' });
+  }
+};
