@@ -129,3 +129,19 @@ export const getAll = async (req, res) => {
     res.json("don't know wtf happened");
   }
 };
+
+// Remove user
+
+export const removeUser = async (req, res) => {
+  try {
+    const user = await User.findByIdAndDelete(req.params.id);
+
+    if (!user) {
+      res.json({ message: "This user doesn't exist." });
+    }
+
+    res.json({ message: 'User deleted.' });
+  } catch (error) {
+    res.json({ message: 'Something went wrong.' });
+  }
+};
